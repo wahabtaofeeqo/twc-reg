@@ -29,7 +29,7 @@ class QrMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Qr Mail',
+            subject: 'ESG',
         );
     }
 

@@ -45,7 +45,7 @@ class RegisteredUserController extends Controller
         // event(new Registered($user));
         $this->createQr($user);       
 
-        return back()->with([
+        return redirect()->back()->with([
             'message' => 'Account created successfully',
         ]);
     }

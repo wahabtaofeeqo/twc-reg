@@ -9,6 +9,8 @@ use App\Models\User;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Mail\QrMail;
 use Mail;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class IndexController extends Controller
 {
@@ -66,5 +68,9 @@ class IndexController extends Controller
 
     private function sendEmail($user) {
         Mail::to($user)->send(new QrMail($user));
+    }
+
+    public function exportQR() {
+        return Excel::download(new UsersExport, 'rsvps.xlsx');
     }
 }

@@ -49,7 +49,7 @@ export default function Dashboard({models}) {
 
                         <div class="text-end mb-6">
                             <button onClick={sendQr}>Send QR</button>
-                            <a href="/export-qr" className="bg-sky-500 rounded ms-6 px-3 py-2 text-white">Export Data</a>
+                            <a href="/dashboard/export-qr" className="bg-sky-500 rounded ms-6 px-3 py-2 text-white">Export Data</a>
                         </div>
                     </div>
                     <div className="bg-white overflow-hidden shadow-sm mx-4 lg:mx-0 rounded">
