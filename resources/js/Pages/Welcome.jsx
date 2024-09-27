@@ -65,12 +65,12 @@ export default function Welcome({ }) {
                                 <div className='p-3'>
                                     {
                                         recentlySuccessful && <div className='p-3 bg-green-500 text-white rounded mb-4'>
-                                            Thank you for registring for ESG 2024
+                                            Thank you for Registering for ESG 2024
                                         </div>
                                     }
                                     <form onSubmit={submit}>
                                         <div>
-                                            <InputLabel htmlFor="name" value="Fullname" />
+                                            <InputLabel htmlFor="name" value="Full Name" />
 
                                             <TextInput
                                                 id="name"

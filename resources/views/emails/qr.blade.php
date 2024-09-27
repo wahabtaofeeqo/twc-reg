@@ -1,5 +1,9 @@
 <x-mail::message>
 
+<div style="text-align: center; margin-bottom: 10px">
+    <img src="{{ asset("images/topbar.png") }}" alt="QR Code">
+</div>
+
 # Dear {{$user->name}}
 
 <p>

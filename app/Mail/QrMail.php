@@ -29,7 +29,7 @@ class QrMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'ESG',
+            subject: 'ESG Forum',
         );
     }
 
@@ -38,8 +38,9 @@ class QrMail extends Mailable
      */
     public function content(): Content
     {
+        $isPhysical = $this->user->attendance == "Physically";
         return new Content(
-            markdown: 'emails.qr',
+            markdown: $isPhysical ? 'emails.qr' : 'emails.virtual',
         );
     }
 
