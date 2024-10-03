@@ -41,7 +41,7 @@ class QrMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: !$this->type ? 'emails.qr' : 'emails.virtual',
+            markdown: $this->user->confirmed ? 'emails.qr' : 'emails.virtual',
         );
     }
 

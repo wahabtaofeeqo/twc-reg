@@ -36,10 +36,15 @@ class IndexController extends Controller
         $model->confirmed = $type;
         $model->save();
 
-        try {
-            Mail::to($model)->send(new QrMail($model, $type));
-        } 
-        catch (\Throwable $e) {}
+        if($type) {
+            $this->createQr($model);
+        }
+        else {
+            try { 
+                Mail::to($model)->send(new QrMail($model, $type));
+            } 
+            catch (\Throwable $e) {}
+        }
 
         return redirect()->back();
     }

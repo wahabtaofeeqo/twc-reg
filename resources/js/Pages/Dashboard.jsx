@@ -104,10 +104,10 @@ export default function Dashboard({models}) {
                                                     <td className="px-6 py-4"> {model.email} </td>
                                                     <td className="px-6 py-4"> {model.designation || 'N/A'} </td>
                                                     <td className="px-6 py-4"> {model.industry || 'N/A'} </td>
-                                                    <td className="px-6 py-4"> {model.confirmed ? 'Yes' : 'No'} </td>
+                                                    <td className="px-6 py-4"> {+model.confirmed ? 'Yes' : 'No'} </td>
                                                     <td className="px-6 py-4 flex gap-2">
                                                         {
-                                                            model.confirmed ? 
+                                                            +model.confirmed ? 
                                                             (
                                                                 <button onClick={() => reply(model)} className='bg-red-500 py-1 px-2 text-white rounded'>
                                                                     <i className='fas fa-x'></i>
