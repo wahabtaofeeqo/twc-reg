@@ -9,20 +9,16 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class QrMail extends Mailable
+class UserJoined extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $user;
-    public $type;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($user, $type = false)
+    public function __construct()
     {
-        $this->user = $user;
-        $this->type = $type;
+        //
     }
 
     /**
@@ -31,7 +27,7 @@ class QrMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'FMDQ',
+            subject: 'User Joined',
         );
     }
 
@@ -41,7 +37,7 @@ class QrMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: !$this->type ? 'emails.qr' : 'emails.virtual',
+            markdown: 'emails.user_joined',
         );
     }
 

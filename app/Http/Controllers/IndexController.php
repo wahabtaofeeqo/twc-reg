@@ -28,6 +28,22 @@ class IndexController extends Controller
         ]);
     }
 
+    public function acceptOrReject($id, $type)
+    {
+        $type = $type == 'false' ? false : true;
+
+        $model = User::findOrFail($id);
+        $model->confirmed = $type;
+        $model->save();
+
+        try {
+            Mail::to($model)->send(new QrMail($model, $type));
+        } 
+        catch (\Throwable $e) {}
+
+        return redirect()->back();
+    }
+
     private function createQr($user) {
 
         $path = public_path('qrcode');
@@ -71,6 +87,6 @@ class IndexController extends Controller
     }
 
     public function exportQR() {
-        return Excel::download(new UsersExport, 'rsvps.xlsx');
+        return Excel::download(new UsersExport, 'attendees.xlsx');
     }
 }

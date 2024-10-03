@@ -13,6 +13,7 @@ use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 use Inertia\Response;
 use App\Mail\QrMail;
+use App\Mail\UserJoined;
 use Mail;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -34,17 +35,28 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+            'phone' => 'required|string|unique:'.User::class,
             // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $payload = $request->all();
+        $payload['name'] = $payload['firstname'] . ' ' . $payload['lastname'];
+
+        //
         $user = User::create($payload);
 
-        // event(new Registered($user));
-        $this->createQr($user);       
+        try {
+            Mail::to('goldawards@fmdqgroup.com')->send(new UserJoined());
+        } 
+        catch (\Throwable $th) {}
 
+        // event(new Registered($user));
+        // $this->createQr($user);       
+
+        //
         return redirect()->back()->with([
             'message' => 'Account created successfully',
         ]);
