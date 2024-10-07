@@ -1,4 +1,5 @@
 import Checkbox from '@/Components/Checkbox';
+import CreateUserForm from '@/Components/CreateUserForm';
 import Modal from '@/Components/Modal';
 import PageLink from '@/Components/PageLink';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
@@ -7,6 +8,7 @@ import { useState } from 'react';
 
 export default function Dashboard({models}) {
     
+    const [user, setUser] = useState(null);
     const [data, setData] = useState(null)
     const [isOpen, setOpen] = useState(false)
     const [selectedUsers, setUsers] = useState([]);
@@ -66,6 +68,12 @@ export default function Dashboard({models}) {
                 </div>
             </Modal>
 
+            <Modal maxWidth='lg' show={user} onClose={() => setUser(null)}>
+                <div className='p-4'>
+                    <CreateUserForm user={user} onCreated={() => setUser(null)}></CreateUserForm>
+                </div>
+            </Modal>
+
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className='md:flex justify-between mb-4 lg:px-0 p-4 items-center'>
@@ -85,11 +93,13 @@ export default function Dashboard({models}) {
                                 <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                                     <tr>
                                         <th scope="col" className="px-6 py-3">#</th>
+                                        <th scope="col" className="px-6 py-3">Title</th>
                                         <th scope="col" className="px-6 py-3">Name</th>
                                         <th scope="col" className="px-6 py-3">Email</th>
+                                        <th scope="col" className="px-6 py-3">Phone</th>
                                         <th scope="col" className="px-6 py-3">Designation</th>
                                         <th scope="col" className="px-6 py-3">Company</th>
-                                        {/* <th scope="col" className="px-6 py-3">Nationality</th> */}
+                                        <th scope="col" className="px-6 py-3">Category</th>
                                         <th scope="col" className="px-6 py-3">Approved</th>
                                         <th scope="col" className="px-6 py-3">Action</th>
                                     </tr>
@@ -100,25 +110,32 @@ export default function Dashboard({models}) {
                                             return (
                                                 <tr className="bg-white border-b" key={index}>
                                                     <td className="px-6 py-4"> {index + 1} </td>
+                                                    <td className="px-6 py-4"> {model.title || 'NA'} </td>
                                                     <td className="px-6 py-4"> {model.name} </td>
                                                     <td className="px-6 py-4"> {model.email} </td>
+                                                    <td className="px-6 py-4"> {model.phone} </td>
                                                     <td className="px-6 py-4"> {model.designation || 'N/A'} </td>
+                                                    <td className="px-6 py-4"> {model.organization || 'N/A'} </td>
                                                     <td className="px-6 py-4"> {model.industry || 'N/A'} </td>
                                                     <td className="px-6 py-4"> {+model.confirmed ? 'Yes' : 'No'} </td>
                                                     <td className="px-6 py-4 flex gap-2">
                                                         {
                                                             +model.confirmed ? 
                                                             (
-                                                                <button onClick={() => reply(model)} className='bg-red-500 py-1 px-2 text-white rounded'>
+                                                                <button title='Reject' onClick={() => reply(model)} className='bg-red-500 py-1 px-2 text-white rounded'>
                                                                     <i className='fas fa-x'></i>
                                                                 </button>
                                                             ) : 
                                                             (
-                                                                <button onClick={() => reply(model, true)} className='bg-green-500 py-1 px-2 text-white rounded'>
+                                                                <button title='Approve' onClick={() => reply(model, true)} className='bg-green-500 py-1 px-2 text-white rounded'>
                                                                     <i className='fas fa-check'></i>
                                                                 </button>
                                                             )
                                                         }
+
+                                                            <button onClick={() => setUser(model)}>
+                                                                <i className="fas fa-pencil text-blue-500"></i>
+                                                            </button>
                                                         
                                                         {/* <Checkbox onChange={() => onChecked(model)}></Checkbox> */}
                                                     </td>
