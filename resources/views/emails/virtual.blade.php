@@ -1,19 +1,35 @@
 <x-mail::message>
 
 <div style="text-align: center; margin-bottom: 10px">
-    <img src="{{ asset("images/FMDQ.png") }}" alt="QR Code">
+    <img src="{{ asset("images/topbar.png") }}" alt="QR Code">
 </div>
 
-# Dear {{$user->title}} {{explode(' ', $user->name)[1]}}
+# Dear {{$user->name}}
 
 <p>
- Thank you for expressing your interest in attending the 2024 FMDQ GOLD Awards Ceremony. Unfortunately, we are unable to confirm your participation for this year’s event.
+    We're excited to have you join us virtually at the 2024 Private Sector ESG Forum. To add this event to your calendar, click here: <a href="https://calendar.google.com/calendar/u/0/r/week/2024/11/06">Add</a> 
 </p>
 
 <p>
-    Please accept our regrets and we look forward to welcoming you to our future events.
+    Please note that the link to join the meeting virtually will be sent a few days to the event. 
 </p>
 
-Thank you,<br>
+<p>
+    Don't miss the opportunity to participate in the conversations and contribute to a sustainable Africa. 
+</p>
+
+<p>
+    For more information, please visit our website at <a href="https://esgforumafrica.com/">https://esgforumafrica.com/</a>
+</p>
+
+<p>
+    We look forward to welcoming you!
+</p>
+
+<div style="margin: 10px 0px">
+    <img src="{{ asset("images/time.png") }}" alt="Time banner">
+</div>
+
+Esg Planing committee,<br>
 {{ config('app.name') }}
 </x-mail::message>

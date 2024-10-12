@@ -15,13 +15,18 @@ use Maatwebsite\Excel\Facades\Excel;
 class IndexController extends Controller
 {
     /**
-     * Display the user's profile form.
+     * Display the users
      */
     public function index(Request $request)
     {
-        $models = User::where('type', 'User')
-            ->latest()->paginate(10);
+        $query = User::query()->where('type', 'User');
+        if($request->attendance && $request->attendance != 'all') {
+            $query->where('attendance', $request->attendance);
+        }
+        
+        $models = $query->latest()->paginate(10);
 
+        //
         return Inertia::render('Dashboard', [
             'models' => $models,
             'status' => session('status'),

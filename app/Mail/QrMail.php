@@ -14,15 +14,13 @@ class QrMail extends Mailable
     use Queueable, SerializesModels;
 
     public $user;
-    public $type;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($user, $type = false)
+    public function __construct($user)
     {
         $this->user = $user;
-        $this->type = $type;
     }
 
     /**
@@ -31,7 +29,7 @@ class QrMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'FMDQ',
+            subject: 'ESG Forum',
         );
     }
 
@@ -40,8 +38,9 @@ class QrMail extends Mailable
      */
     public function content(): Content
     {
+        $isPhysical = $this->user->attendance == "Physically";
         return new Content(
-            markdown: !$this->type ? 'emails.qr' : 'emails.virtual',
+            markdown: $isPhysical ? 'emails.qr' : 'emails.virtual',
         );
     }
 
