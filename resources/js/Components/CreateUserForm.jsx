@@ -87,7 +87,7 @@ export default function CreateUserForm({onCreated, user}) {
                 name="title"
                 isFocused={true}
                 value={data.title}
-                options={['Mr', 'Mrs', 'Ms', 'Dr', 'Professor']}
+                options={['Mr.', 'Mrs.', 'Ms.', 'Dr.', 'Professor']}
                 onChange={(e) => setData('title', e.target.value)}
             />
 
@@ -113,7 +113,7 @@ export default function CreateUserForm({onCreated, user}) {
                 <InputError message={errors.firstname} className="mt-2" />
             </div>
 
-            <div className='basis-2/4'>
+            <div className='basis-2/4 mt-4 md:mt-0'>
                 <div className="mb-2 flex">
                     <InputLabel htmlFor="lastname" value="Last Name" />
                     <small className='text-red-500'>*</small>
@@ -282,8 +282,8 @@ export default function CreateUserForm({onCreated, user}) {
                                 setData('terms', e.target.checked)
                             }
                         />
-                        <span className="text-sm text-gray-600 italic">
-                            By Providing your personal data, you acknowledge that you have read and understood FMDQ's Privacy Policy <a href="http://fmdqgroup.com/privacy-policy" className='text-blue-500' target="_blank">Privacy Policy</a> and you hereby consent to the collection, processing, and sharing of your information by FMDQ Group PLC and its subsidiaries for the purposes outlined in the Privacy Policy. You may however withdraw your consent at anytime by contacting us at <a href="mailto:privacypolicy@fmdqgroup.com" className='text-blue-500'>privacypolicy@fmdqgroup.com</a>
+                        <span className="text-sm text-gray-600 italic text-justify">
+                            By providing your personal data, you acknowledge that you have read and understood FMDQ's <a href="http://fmdqgroup.com/privacy-policy" className='text-blue-500' target="_blank">Privacy Policy</a> and you hereby consent to the collection, processing, and sharing of your information by FMDQ Group PLC and its subsidiaries for the purposes outlined in the Privacy Policy. You may however withdraw your consent at anytime by contacting us at <a href="mailto:privacypolicy@fmdqgroup.com" className='text-blue-500'>privacypolicy@fmdqgroup.com</a>
                         </span>
                     </label>
                 </div>
@@ -297,8 +297,8 @@ export default function CreateUserForm({onCreated, user}) {
                                 setData('remember', e.target.checked)
                             }
                         />
-                        <span className="ms-2 text-sm text-gray-600 italic">
-                            I would like to receive information about FMDQ
+                        <span className="ms-2 text-sm text-gray-600 italic text-left">
+                            I would like to receive information about FMDQ Group PLC
                         </span>
                     </label>
                 </div>

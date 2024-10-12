@@ -12,9 +12,9 @@ export default function Welcome({ }) {
             <Head title="Welcome" />
             <Modal maxWidth='xl' show={isOpen} onClose={() => setOpen(false)}>
                 <div className='p-4'>
-                    <h4 className='font-bold text-xl mb-4'>RSVP Received</h4>
-                    <p className='mb-4 text-sky-900 italic'>
-                        Thank you for RSVPing for the 2024 FMDQ GOLD Awards Ceremony. Your RSVP will be reviewed by FMDQ Group PLC, who reserves the right to approve all attendance requests.
+                    <h4 className='font-bold text-xl mb-4 hidden'>RSVP Received</h4>
+                    <p className='mb-4 text-sky-900 italic text-justify'>
+                        Thank you for submitting your RSVP for the 2024 FMDQ GOLD Awards Ceremony. Your request will be reviewed by FMDQ Group PLC, who reserves the right to approve all attendance requests.
                     </p>
 
                     <div className='text-end'>
@@ -23,7 +23,7 @@ export default function Welcome({ }) {
                 </div>
             </Modal>
 
-            <div className="bg-sky-900 text-black/50 ">
+            <div className="bg-sky- text-black/50" style={{backgroundColor: '#23346a'}}>
                 {/* <img
                     id="background"
                     className="absolute -left-20 top-0 max-w-[877px]"
@@ -32,15 +32,11 @@ export default function Welcome({ }) {
                 <div className="relative flex min-h-screen selection:bg-[#FF2D20] selection:text-white">
                     <div className="relative w-full max-w-2xl px-6 lg:max-w-7xl mx-auto shadow-sm">
                         <main>
-                            <div className="md:w-3/4 lg:w-2/4 mx-auto bg-white rounded my-5 p-3">
-                                <img src="/images/FMDQ.png" alt="" className='h-auto w-full rounded-t' />
-                                <div className='p-3'>
-                                    {
-                                        isOpen && <div className='p-3 bg-green-500 text-white rounded mb-4'>
-                                            Thank you for Registering for ESG 2024
-                                        </div>
-                                    }
-
+                            <div className="md:w-3/4 lg:w-3/4 mx-auto bg-white rounded my-5">
+                               <div className="overflow-hidden h-80"> 
+                                    <img src="/images/banner.jpg" alt="" className='h-auto w-full rounded-t h-full' />
+                               </div>
+                                <div className='p-6'>
                                     <CreateUserForm onCreated={() => setOpen(true)}></CreateUserForm>
                                 </div>
                             </div>

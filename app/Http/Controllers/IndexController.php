@@ -30,20 +30,21 @@ class IndexController extends Controller
 
     public function acceptOrReject($id, $type)
     {
-        $type = $type == 'false' ? false : true;
-
+        $type = intval($type);
         $model = User::findOrFail($id);
         $model->confirmed = $type;
         $model->save();
 
-        if($type) {
+        if($type == 1) {
             $this->createQr($model);
         }
         else {
             try { 
                 Mail::to($model)->send(new QrMail($model, $type));
             } 
-            catch (\Throwable $e) {}
+            catch (\Throwable $e) {
+                info($e->getMessage());
+            }
         }
 
         return redirect()->back();

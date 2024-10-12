@@ -24,13 +24,13 @@ export default function Dashboard({models}) {
         }
     }
 
-    const reply = (model, isAccept = false) => {
+    const reply = (model, isAccept = '') => {
         setData({user: model, type: isAccept});
         setOpen(true);
     }
 
     const doReply = () => {
-        router.get(`/dashboard/accept/${data.user.id}/${data.type}`)
+        router.get(`/dashboard/accept/${data.user.id}/${+data.type}`)
     }
 
     const onChecked = (model) => {
@@ -58,7 +58,7 @@ export default function Dashboard({models}) {
                 <div className='p-4'>
                     <h4 className='font-bold text-xl mb-4'>Reply</h4>
                     <p className='mb-6'>
-                        Are you sure you want to {data?.type ? 'Approve' : 'Reject'} {data?.user.name}
+                        Are you sure you want to {+data?.type == 1 ? 'Approve' : 'Reject'} {data?.user.name}
                     </p>
 
                     <div className='flex justify-end items-center gap-3'>
@@ -117,9 +117,9 @@ export default function Dashboard({models}) {
                                                     <td className="px-6 py-4"> {model.designation || 'N/A'} </td>
                                                     <td className="px-6 py-4"> {model.organization || 'N/A'} </td>
                                                     <td className="px-6 py-4"> {model.industry || 'N/A'} </td>
-                                                    <td className="px-6 py-4"> {+model.confirmed ? 'Yes' : 'No'} </td>
+                                                    <td className="px-6 py-4"> {+model.confirmed  == 1 ? 'Yes' : 'No'} </td>
                                                     <td className="px-6 py-4 flex gap-2">
-                                                        {
+                                                        {/* {
                                                             +model.confirmed ? 
                                                             (
                                                                 <button title='Reject' onClick={() => reply(model)} className='bg-red-500 py-1 px-2 text-white rounded'>
@@ -131,11 +131,19 @@ export default function Dashboard({models}) {
                                                                     <i className='fas fa-check'></i>
                                                                 </button>
                                                             )
-                                                        }
-
+                                                        } */}
+                                                            
                                                             <button onClick={() => setUser(model)}>
                                                                 <i className="fas fa-pencil text-blue-500"></i>
                                                             </button>
+
+                                                            <select onChange={(e) => reply(model, e.target.value)} className="rounded bg-white py-1 w-24">
+                                                                <option value=""></option>
+                                                                <option value="1">Approve</option>
+                                                                <option value="2">Reject</option>
+                                                            </select>
+
+                                                           
                                                         
                                                         {/* <Checkbox onChange={() => onChecked(model)}></Checkbox> */}
                                                     </td>

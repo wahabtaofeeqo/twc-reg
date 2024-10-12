@@ -31,7 +31,7 @@ class QrMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'FMDQ',
+            subject: '2024 FMDQ GOLD',
         );
     }
 
@@ -41,7 +41,7 @@ class QrMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: $this->user->confirmed ? 'emails.qr' : 'emails.virtual',
+            markdown: $this->user->confirmed == 1 ? 'emails.qr' : 'emails.virtual',
         );
     }
 

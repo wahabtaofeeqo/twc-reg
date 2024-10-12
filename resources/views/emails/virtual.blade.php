@@ -7,7 +7,7 @@
 # Dear {{$user->title}} {{explode(' ', $user->name)[1]}}
 
 <p>
- Thank you for expressing your interest in attending the 2024 FMDQ GOLD Awards Ceremony. Unfortunately, we are unable to confirm your participation for this year’s event.
+    Thank you for expressing your interest in attending the 2024 FMDQ GOLD Awards Ceremony. Unfortunately, we are unable to confirm your participation for this year’s event.
 </p>
 
 <p>
