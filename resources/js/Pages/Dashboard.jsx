@@ -4,7 +4,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, router } from '@inertiajs/react';
 import { useState, useEffect } from 'react';
 
-export default function Dashboard({models}) {
+export default function Dashboard({models, virtuals}) {
 
     const [query, setQuery] = useState('');
     const [selectedUsers, setUsers] = useState([]);
@@ -52,19 +52,26 @@ export default function Dashboard({models}) {
         }
      }, [query])
 
+     console.log(models);
+     
     return (
         <AuthenticatedLayout>
             <Head title="Dashboard" />
 
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className='md:flex justify-between mb-4 lg:px-0 p-4 items-center'>
-                        <div className='px-4 w-full md:w-2/6 border bg-white p-5 mb-4 rounded'>
+                    <div className='md:flex justify-between mb-4 gap-4 lg:px-0 p-4 items-center'>
+                        <div className='px-4 w-full basis-2/6 border bg-white p-5 mb-4 rounded'>
                             <p>Total</p>
-                            <h4 className='font-bold text-xl'>{models.data.length}</h4>
+                            <h4 className='font-bold text-xl'>{models.total}</h4>
                         </div>
 
-                        <div class="text-end mb-6">
+                        <div className='px-4 w-full basis-2/6 border bg-white p-5 mb-4 rounded'>
+                            <p>Vituals</p>
+                            <h4 className='font-bold text-xl'>{virtuals}</h4>
+                        </div>
+
+                        <div class="basis-2/6 text-end mb-6">
                             <button onClick={sendQr}>Send QR</button>
                             <a href="/dashboard/export-qr" className="bg-sky-500 rounded ms-6 px-3 py-2 text-white">Export Data</a>
                         </div>

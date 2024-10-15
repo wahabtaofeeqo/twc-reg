@@ -25,10 +25,12 @@ class IndexController extends Controller
         }
         
         $models = $query->latest()->paginate(10);
+        $virtuals = User::where('attendance', 'Virtually')->count();
 
         //
         return Inertia::render('Dashboard', [
             'models' => $models,
+            'virtuals' => $virtuals,
             'status' => session('status'),
         ]);
     }
