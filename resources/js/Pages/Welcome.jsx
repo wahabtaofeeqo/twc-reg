@@ -33,8 +33,8 @@ export default function Welcome({ }) {
                     <div className="relative w-full max-w-2xl px-6 lg:max-w-7xl mx-auto shadow-sm">
                         <main>
                             <div className="md:w-3/4 lg:w-3/4 mx-auto bg-white rounded my-5">
-                               <div className="overflow-hidden h-80"> 
-                                    <img src="/images/banner.jpg" alt="" className='h-auto w-full rounded-t h-full' />
+                               <div className="overflow-hidden h-48 md:h-80 bg-red-500"> 
+                                    <img src="/images/banner.png" alt="" className='h-auto w-full rounded-t h-full' />
                                </div>
                                 <div className='p-6'>
                                     <CreateUserForm onCreated={() => setOpen(true)}></CreateUserForm>
