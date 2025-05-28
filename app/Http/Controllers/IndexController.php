@@ -11,6 +11,7 @@ use App\Mail\QrMail;
 use Mail;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Mail\SendReminder;
 
 class IndexController extends Controller
 {
@@ -59,7 +60,7 @@ class IndexController extends Controller
 
         $IDs = $request->ids ?? [];
         foreach ($IDs as $key => $id) {
-            $this->createQr(User::find($id));
+            $this->sendEmail(User::find($id));
         }
 
         //
@@ -67,7 +68,7 @@ class IndexController extends Controller
     }
 
     private function sendEmail($user) {
-        Mail::to($user)->send(new QrMail($user));
+        Mail::to($user)->send(new SendReminder($user));
     }
 
     public function exportQR() {

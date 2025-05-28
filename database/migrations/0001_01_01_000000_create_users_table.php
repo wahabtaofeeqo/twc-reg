@@ -20,11 +20,12 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->enum('type', ['User', 'Admin'])->default('User');
             $table->string('password')->nullable();
-            $table->string('industry');
-            $table->string('attendance');
-            $table->string('designation');
-            $table->string('nationality');
-            $table->string('organization');
+            $table->string('industry')->nullable();
+            $table->string('attendance')->nullable();
+            $table->string('designation')->nullable();
+            $table->string('nationality')->nullable();
+            $table->string('organization')->nullable();
+            $table->string('phone')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

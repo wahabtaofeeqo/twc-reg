@@ -48,7 +48,7 @@ export default function Dashboard({models}) {
                         </div>
 
                         <div class="text-end mb-6">
-                            <button onClick={sendQr}>Send QR</button>
+                            <button onClick={sendQr}>Send Mail</button>
                             <a href="/dashboard/export-qr" className="bg-sky-500 rounded ms-6 px-3 py-2 text-white">Export Data</a>
                         </div>
                     </div>
@@ -60,9 +60,8 @@ export default function Dashboard({models}) {
                                         <th scope="col" className="px-6 py-3">#</th>
                                         <th scope="col" className="px-6 py-3">Name</th>
                                         <th scope="col" className="px-6 py-3">Email</th>
-                                        <th scope="col" className="px-6 py-3">Designation</th>
-                                        <th scope="col" className="px-6 py-3">Industry</th>
-                                        <th scope="col" className="px-6 py-3">Nationality</th>
+                                        <th scope="col" className="px-6 py-3">Phone</th>
+                                        <th scope="col" className="px-6 py-3">Dietary Restriction</th>
                                         <th scope="col" className="px-6 py-3">Action</th>
                                     </tr>
                                 </thead>
@@ -74,9 +73,8 @@ export default function Dashboard({models}) {
                                                     <td className="px-6 py-4"> {index + 1} </td>
                                                     <td className="px-6 py-4"> {model.name} </td>
                                                     <td className="px-6 py-4"> {model.email} </td>
-                                                    <td className="px-6 py-4"> {model.designation || 'N/A'} </td>
+                                                    <td className="px-6 py-4"> {model.phone || 'N/A'} </td>
                                                     <td className="px-6 py-4"> {model.industry || 'N/A'} </td>
-                                                    <td className="px-6 py-4"> {model.nationality || 'N/A'} </td>
                                                     <td className="px-6 py-4">
                                                         <Checkbox onChange={() => onChecked(model)}></Checkbox>
                                                     </td>

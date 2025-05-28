@@ -14,6 +14,7 @@ use Inertia\Inertia;
 use Inertia\Response;
 use App\Mail\QrMail;
 use Mail;
+use App\Mail\SendReminder;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class RegisteredUserController extends Controller
@@ -36,18 +37,20 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
-            // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $payload = $request->all();
         $user = User::create($payload);
 
-        // event(new Registered($user));
-        $this->createQr($user);       
+        $this->sendEmail($user);       
 
         return redirect()->back()->with([
             'message' => 'Account created successfully',
         ]);
+    }
+
+    private function sendEmail($user) {
+        Mail::to($user)->send(new SendReminder($user));
     }
 
     private function createQr($user) {

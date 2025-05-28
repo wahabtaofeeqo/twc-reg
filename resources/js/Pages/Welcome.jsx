@@ -61,11 +61,11 @@ export default function Welcome({ }) {
                     <div className="relative w-full max-w-2xl px-6 lg:max-w-7xl mx-auto shadow-sm">
                         <main>
                             <div className="md:w-3/4 lg:w-2/4 mx-auto bg-white rounded my-5">
-                                <img src="/images/bg.jpg" alt="" className='h-auto w-full rounded-t' />
+                                <img src="/images/macallan.jpg" alt="" className='h-60 w-full rounded-t' />
                                 <div className='p-3'>
                                     {
                                         recentlySuccessful && <div className='p-3 bg-green-500 text-white rounded mb-4'>
-                                            Thank you for Registering for ESG 2024
+                                            Thank you for Registering!
                                         </div>
                                     }
                                     <form onSubmit={submit}>
@@ -87,21 +87,6 @@ export default function Welcome({ }) {
                                         </div>
 
                                         <div className='mt-4'>
-                                            <InputLabel htmlFor="nationality" value="Nationality" />
-
-                                            <TextInput
-                                                id="nationality"
-                                                type="text"
-                                                name="nationality"
-                                                value={data.nationality}
-                                                className="mt-1 block w-full"
-                                                onChange={(e) => setData('nationality', e.target.value)}
-                                            />
-
-                                            <InputError message={errors.nationality} className="mt-2" />
-                                        </div>
-
-                                        <div className='mt-4'>
                                             <InputLabel htmlFor="email" value="Email Address" />
 
                                             <TextInput
@@ -118,64 +103,35 @@ export default function Welcome({ }) {
                                         </div>
 
                                         <div className='mt-4'>
-                                            <InputLabel htmlFor="organization" value="Organization" />
+                                            <InputLabel htmlFor="phone" value="Phone" />
 
                                             <TextInput
-                                                id="organization"
+                                                id="phone"
                                                 type="text"
-                                                name="organization"
-                                                value={data.organization}
+                                                name="phone"
+                                                value={data.phone}
                                                 className="mt-1 block w-full"
-                                                onChange={(e) => setData('organization', e.target.value)}
+                                                onChange={(e) => setData('phone', e.target.value)}
                                             />
 
-                                            <InputError message={errors.organization} className="mt-2" />
+                                            <InputError message={errors.phone} className="mt-2" />
                                         </div>
 
                                         <div className='mt-4'>
-                                            <InputLabel htmlFor="designation" value="Designation" />
-
-                                            <TextInput
-                                                id="designation"
-                                                type="text"
-                                                name="designation"
-                                                value={data.designation}
-                                                className="mt-1 block w-full"
-                                                onChange={(e) => setData('designation', e.target.value)}
-                                            />
-
-                                            <InputError message={errors.designation} className="mt-2" />
-                                        </div>
-
-                                        <div className='mt-4'>
-                                            <InputLabel htmlFor="industry" value="Industry" />
+                                            <InputLabel htmlFor="Dietary Restriction" value="Dietary Restriction" />
                                             <SelectInput 
                                                 id="industry"
                                                 className="w-full"
                                                 name="industry"
-                                                options={industries}
+                                                options={['Vegetarian', 'Non vegetarian', 'Lactose intolerant']}
                                                 onChange={(e) => setData('industry', e.target.value)}
                                             />
                     
                                             <InputError message={errors.industry} className="mt-2" />
                                         </div>
 
-                                        <div className="mt-4">
-                                            <InputLabel htmlFor="attendance" value="Attending Physically OR Virtually" />
-
-                                            <SelectInput 
-                                                id="attendance"
-                                                className="w-full"
-                                                name="attendance"
-                                                options={['Virtually', 'Physically']}
-                                                onChange={(e) => setData('attendance', e.target.value)}
-                                            />
-
-                                            <InputError message={errors.attendance} className="mt-2" />
-                                        </div>
-
                                         <div className="mt-6 flex items-center justify-end">
-                                            <button className="py-2 px-10 rounded-lg bg-sky-500 text-white" disabled={processing}>
+                                            <button className="py-2 px-10 rounded-lg bg-red-500 text-white" disabled={processing}>
                                                 Register
                                             </button>
                                         </div>
