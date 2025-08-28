@@ -63,6 +63,7 @@ export default function Dashboard({models}) {
                                         <th scope="col" className="px-6 py-3">Designation</th>
                                         <th scope="col" className="px-6 py-3">Industry</th>
                                         <th scope="col" className="px-6 py-3">Nationality</th>
+                                        <th scope="col" className="px-6 py-3">Masterclass</th>
                                         <th scope="col" className="px-6 py-3">Action</th>
                                     </tr>
                                 </thead>
@@ -77,6 +78,7 @@ export default function Dashboard({models}) {
                                                     <td className="px-6 py-4"> {model.designation || 'N/A'} </td>
                                                     <td className="px-6 py-4"> {model.industry || 'N/A'} </td>
                                                     <td className="px-6 py-4"> {model.nationality || 'N/A'} </td>
+                                                    <td className="px-6 py-4"> {model.masterclass || 'N/A'} </td>
                                                     <td className="px-6 py-4">
                                                         <Checkbox onChange={() => onChecked(model)}></Checkbox>
                                                     </td>

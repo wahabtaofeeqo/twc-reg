@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('designation');
             $table->string('nationality');
             $table->string('organization');
+             $table->string('masterclass')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

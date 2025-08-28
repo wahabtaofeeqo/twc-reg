@@ -38,7 +38,8 @@ export default function Welcome({ }) {
         organization: '',
         designation: '',
         industry: '',
-        attendance: ''
+        attendance: '',
+        masterclass: ''
     });
 
     const submit = (e) => {
@@ -61,11 +62,15 @@ export default function Welcome({ }) {
                     <div className="relative w-full max-w-2xl px-6 lg:max-w-7xl mx-auto shadow-sm">
                         <main>
                             <div className="md:w-3/4 lg:w-2/4 mx-auto bg-white rounded my-5">
-                                <img src="/images/bg.jpg" alt="" className='h-auto w-full rounded-t' />
+
+                                <div className='overflow-hidden'>
+                                    <img src="/images/bg.jpeg" alt="" className='h-[400px] w-full rounded-t' />
+                                </div>
+
                                 <div className='p-3'>
                                     {
                                         recentlySuccessful && <div className='p-3 bg-green-500 text-white rounded mb-4'>
-                                            Thank you for Registering for ESG 2024
+                                            Thank you for Registering for ESG 2025
                                         </div>
                                     }
                                     <form onSubmit={submit}>
@@ -172,6 +177,20 @@ export default function Welcome({ }) {
                                             />
 
                                             <InputError message={errors.attendance} className="mt-2" />
+                                        </div>
+
+                                        <div className="mt-4">
+                                            <InputLabel htmlFor="attendance" value="Attending Masterclass?" />
+
+                                            <SelectInput 
+                                                id="masterclass"
+                                                className="w-full"
+                                                name="masterclass"
+                                                options={['Virtually', 'Physically']}
+                                                onChange={(e) => setData('masterclass', e.target.value)}
+                                            />
+
+                                            <InputError message={errors.masterclass} className="mt-2" />
                                         </div>
 
                                         <div className="mt-6 flex items-center justify-end">

@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -43,7 +43,7 @@ class RegisteredUserController extends Controller
         $user = User::create($payload);
 
         // event(new Registered($user));
-        $this->createQr($user);       
+        $this->createQr($user);   
 
         return redirect()->back()->with([
             'message' => 'Account created successfully',

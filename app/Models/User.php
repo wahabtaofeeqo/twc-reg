@@ -25,7 +25,8 @@ class User extends Authenticatable
         'attendance',
         'nationality',
         'designation',
-        'organization'
+        'organization',
+        'masterclass'
     ];
 
     /**
