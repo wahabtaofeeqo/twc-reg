@@ -19,12 +19,32 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
-        $models = User::where('type', 'User')
-            ->latest()->paginate(10);
-
+        $models =\App\Models\Registration::latest()->paginate(10);
         return Inertia::render('Dashboard', [
             'models' => $models,
             'status' => session('status'),
+        ]);
+    }
+
+    /**
+     * Register user for event
+     */
+    public function store(Request $request) {
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string|email',
+            'industry' => 'required|string',
+            'attendance' => 'required|string',
+            'designation' => 'required|string',
+        ]);
+
+        $payload = $request->all();
+        $user = \App\Models\Registration::create($payload);
+        $this->createQr($user);   
+
+        //
+        return redirect()->back()->with([
+            'message' => 'Account created successfully',
         ]);
     }
 

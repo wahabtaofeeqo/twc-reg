@@ -7,7 +7,7 @@
 # Dear {{$user->name}}
 
 <p>
-    We're excited to have you join us virtually at the 2024 Private Sector ESG Forum. To add this event to your calendar, click here: <a href="https://calendar.google.com/calendar/u/0/r/week/2024/11/06">Add</a> 
+    We're excited to have you join us virtually at the {{date('Y')}} Private Sector ESG Forum. To add this event to your calendar, click here: <a href="https://calendar.google.com/calendar/u/0/r/week/2024/11/06">Add</a> 
 </p>
 
 <p>

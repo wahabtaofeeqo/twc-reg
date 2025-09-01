@@ -15,6 +15,14 @@ Route::get('/', function () {
     ]);
 });
 
+/**
+ * RSVP for the event
+ */
+Route::post('rsvp', [IndexController::class, 'store'])->name('rsvp');
+
+/**
+ * Admin 
+ */
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'is.admin']], function () {
     Route::get('/', [IndexController::class, 'index'])->name('dashboard');
     Route::post('/send-qr', [IndexController::class, 'sendQr'])->name('send');

@@ -7,7 +7,7 @@
 # Dear {{$user->name}}
 
 <p>
-    We are excited to have you join us at the 2024 Private Sector ESG Forum come 6th November @ Civic Centre, Victoria Island, Lagos, Nigeria. 
+    We are excited to have you join us at the {{date('Y')}} Private Sector ESG Forum come 6th November @ Civic Centre, Victoria Island, Lagos, Nigeria. 
 </p>
 
 <p>

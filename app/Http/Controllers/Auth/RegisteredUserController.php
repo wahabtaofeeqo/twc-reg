@@ -12,9 +12,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 use Inertia\Response;
-use App\Mail\QrMail;
-use Mail;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class RegisteredUserController extends Controller
 {
@@ -36,44 +33,17 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
-            // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $payload = $request->all();
-        $user = User::create($payload);
+        User::create($payload);
 
         // event(new Registered($user));
-        $this->createQr($user);   
+        // $this->createQr($user);   
 
         return redirect()->back()->with([
             'message' => 'Account created successfully',
         ]);
-    }
-
-    private function createQr($user) {
-
-        $path = public_path('qrcode');
-        $code = str_pad(strval($user->id), 4, "0");
-        if(!file_exists($path)) mkdir($path, 0777, true);
-        
-        try {
-
-            $file = $code . ".png";
-            $filename = $path . "/" . $file;
-            $realPath = "qrcode/" . $code . ".png";
-            
-            \QrCode::color(255, 0, 127)->format('png')
-                ->size(500)->generate(strval($code), $filename);
-            
-            $user->code = $code;
-            $user->is_sent = true;
-            $user->save();
-
-            //
-            Mail::to($user)->send(new QrMail($user));
-        } 
-        catch (\Exception $e) {
-            info($e->getMessage());
-        }
     }
 }

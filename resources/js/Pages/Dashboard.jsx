@@ -48,8 +48,8 @@ export default function Dashboard({models}) {
                         </div>
 
                         <div class="text-end mb-6">
-                            <button onClick={sendQr}>Send QR</button>
-                            <a href="/dashboard/export-qr" className="bg-sky-500 rounded ms-6 px-3 py-2 text-white">Export Data</a>
+                            <button onClick={sendQr} className='text-sm'>Send QR</button>
+                            <a href="/dashboard/export-qr" className="bg-sky-500 rounded ms-6 px-3 py-2 text-white text-sm">Export Data</a>
                         </div>
                     </div>
                     <div className="bg-white overflow-hidden shadow-sm mx-4 lg:mx-0 rounded">
@@ -64,6 +64,8 @@ export default function Dashboard({models}) {
                                         <th scope="col" className="px-6 py-3">Industry</th>
                                         <th scope="col" className="px-6 py-3">Nationality</th>
                                         <th scope="col" className="px-6 py-3">Masterclass</th>
+                                        <th scope="col" className="px-6 py-3">Questions</th>
+                                         <th scope="col" className="px-6 py-3">Want Mentorship</th>
                                         <th scope="col" className="px-6 py-3">Action</th>
                                     </tr>
                                 </thead>
@@ -79,6 +81,8 @@ export default function Dashboard({models}) {
                                                     <td className="px-6 py-4"> {model.industry || 'N/A'} </td>
                                                     <td className="px-6 py-4"> {model.nationality || 'N/A'} </td>
                                                     <td className="px-6 py-4"> {model.masterclass || 'N/A'} </td>
+                                                    <td className="px-6 py-4"> {model.questions || 'N/A'} </td>
+                                                    <td className="px-6 py-4"> {model.wants_mentorship ? 'Yes' : 'No'} </td>
                                                     <td className="px-6 py-4">
                                                         <Checkbox onChange={() => onChecked(model)}></Checkbox>
                                                     </td>

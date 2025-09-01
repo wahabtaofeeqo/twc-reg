@@ -1,3 +1,4 @@
+import Checkbox from '@/Components/Checkbox';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
@@ -6,7 +7,9 @@ import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
 
 const industries = [
-    'Process industries',
+    //'Process industries',
+    'Agriculture',
+    'Manufacturing',
     'Consumer non durable',
     'Fashion',
     'Aerospace',
@@ -39,12 +42,14 @@ export default function Welcome({ }) {
         designation: '',
         industry: '',
         attendance: '',
-        masterclass: ''
+        masterclass: '',
+        questions: '',
+        wants_mentorship: false
     });
 
     const submit = (e) => {
         e.preventDefault();
-        post(route('register'), {
+        post(route('rsvp'), {
             onSuccess: () => reset(),
         });
     };
@@ -75,6 +80,34 @@ export default function Welcome({ }) {
                                     }
                                     <form onSubmit={submit}>
                                         <div>
+                                            <InputLabel htmlFor="attendance" value="Attending ESG Forum 2025" />
+
+                                            <SelectInput 
+                                                id="attendance"
+                                                className="w-full"
+                                                name="attendance"
+                                                options={['Virtually', 'Physically']}
+                                                onChange={(e) => setData('attendance', e.target.value)}
+                                            />
+
+                                            <InputError message={errors.attendance} className="mt-2" />
+                                        </div>
+
+                                        <div className="mt-4">
+                                            <InputLabel htmlFor="attendance" value="Attending ESG Forum Masterclass 2025?" />
+
+                                            <SelectInput 
+                                                id="masterclass"
+                                                className="w-full"
+                                                name="masterclass"
+                                                options={['Virtually', 'Physically']}
+                                                onChange={(e) => setData('masterclass', e.target.value)}
+                                            />
+
+                                            <InputError message={errors.masterclass} className="mt-2" />
+                                        </div>
+
+                                        <div className='mt-4'>
                                             <InputLabel htmlFor="name" value="Full Name" />
 
                                             <TextInput
@@ -165,32 +198,29 @@ export default function Welcome({ }) {
                                             <InputError message={errors.industry} className="mt-2" />
                                         </div>
 
-                                        <div className="mt-4">
-                                            <InputLabel htmlFor="attendance" value="Attending Physically OR Virtually" />
-
-                                            <SelectInput 
-                                                id="attendance"
+                                        <div className='mt-4'>
+                                            <InputLabel htmlFor="question" value="Any Questions?" />
+                                            <TextInput 
+                                                id="question"
                                                 className="w-full"
-                                                name="attendance"
-                                                options={['Virtually', 'Physically']}
-                                                onChange={(e) => setData('attendance', e.target.value)}
+                                                name="question"
+                                                onChange={(e) => setData('question', e.target.value)}
                                             />
-
-                                            <InputError message={errors.attendance} className="mt-2" />
                                         </div>
 
-                                        <div className="mt-4">
-                                            <InputLabel htmlFor="attendance" value="Attending Masterclass?" />
-
-                                            <SelectInput 
-                                                id="masterclass"
-                                                className="w-full"
-                                                name="masterclass"
-                                                options={['Virtually', 'Physically']}
-                                                onChange={(e) => setData('masterclass', e.target.value)}
-                                            />
-
-                                            <InputError message={errors.masterclass} className="mt-2" />
+                                       <div className="mt-4 block">
+                                            <label className="flex items-center">
+                                                <Checkbox
+                                                    name="mentorship"
+                                                    checked={data.wants_mentorship}
+                                                    onChange={(e) =>
+                                                        setData('wants_mentorship', e.target.checked)
+                                                    }
+                                                />
+                                                <span className="ms-2 text-sm text-gray-600">
+                                                    Join Mentorship Program
+                                                </span>
+                                            </label>
                                         </div>
 
                                         <div className="mt-6 flex items-center justify-end">
