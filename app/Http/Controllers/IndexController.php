@@ -27,6 +27,15 @@ class IndexController extends Controller
     }
 
     /**
+     * Show success page
+     */
+    public function success(Request $request) {
+        return Inertia::render('Success', [
+            'status' => session('status'),
+        ]);
+    }
+
+    /**
      * Register user for event
      */
     public function store(Request $request) {
@@ -43,9 +52,7 @@ class IndexController extends Controller
         $this->createQr($user);   
 
         //
-        return redirect()->back()->with([
-            'message' => 'Account created successfully',
-        ]);
+        return to_route('rsvp.success');
     }
 
     private function createQr($user) {
@@ -57,9 +64,7 @@ class IndexController extends Controller
         try {
 
             $file = $code . ".png";
-            $filename = $path . "/" . $file;
-            $realPath = "qrcode/" . $code . ".png";
-            
+            $filename = $path . "/" . $file;        
             \QrCode::color(255, 0, 127)->format('png')
                 ->size(500)->generate(strval($code), $filename);
             
@@ -78,7 +83,7 @@ class IndexController extends Controller
     public function sendQR(Request $request) {
 
         $IDs = $request->ids ?? [];
-        foreach ($IDs as $key => $id) {
+        foreach ($IDs as $id) {
             $this->createQr(User::find($id));
         }
 

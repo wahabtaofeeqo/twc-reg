@@ -1,7 +1,7 @@
 <x-mail::message>
 
 <div style="text-align: center; margin-bottom: 10px">
-    <img src="{{ asset("images/topbar.png") }}" alt="QR Code">
+    <img src="{{ asset("images/topbar.png") }}" alt="Banner">
 </div>
 
 # Dear {{$user->name}}

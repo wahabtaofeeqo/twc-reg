@@ -19,6 +19,7 @@ Route::get('/', function () {
  * RSVP for the event
  */
 Route::post('rsvp', [IndexController::class, 'store'])->name('rsvp');
+Route::get('success', [IndexController::class, 'success'])->name('rsvp.success');
 
 /**
  * Admin 
