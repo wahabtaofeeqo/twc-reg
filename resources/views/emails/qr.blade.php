@@ -7,7 +7,7 @@
 # Dear {{$user->name}}
 
 <p>
-    We are excited to have you join us at the {{date('Y')}} Private Sector ESG Forum come 6th November @ Civic Centre, Victoria Island, Lagos, Nigeria. 
+    We are excited to have you join us at the {{date('Y')}} Private Sector ESG Forum come 29th October @ Civic Centre, Victoria Island, Lagos, Nigeria. 
 </p>
 
 <p>
@@ -20,12 +20,16 @@
 </p>
 
 <p>
-    Click this <a href="https://calendar.google.com/calendar/u/0/r/week/2024/11/06">Link</a> to add the event to your Calendar.
+    Click this <a href="https://calendar.google.com/calendar/u/0/r/week/2025/10/29">Link</a> to add the event to your Calendar.
 </p>
 
 <p>
     For more information, please visit our website at <a href="https://esgforumafrica.com/">https://esgforumafrica.com/</a>
 </p>
+
+<strong style="display: block; margin-bottom: 10px">
+    {{ $user->masterclass == 'Virtually' ? 'Please note that the link to join the masterclass will be shared subsequently' : '' }}.
+</strong>
 
 <p>
     We look forward to welcoming you!

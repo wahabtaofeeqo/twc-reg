@@ -7,7 +7,7 @@
 # Dear {{$user->name}}
 
 <p>
-    We're excited to have you join us virtually at the {{date('Y')}} Private Sector ESG Forum. To add this event to your calendar, click here: <a href="https://calendar.google.com/calendar/u/0/r/week/2024/11/06">Add</a> 
+    We're excited to have you join us virtually at the {{date('Y')}} Private Sector ESG Forum. To add this event to your calendar, click here: <a href="https://calendar.google.com/calendar/u/0/r/week/2025/10/29">Add</a> 
 </p>
 
 <p>
@@ -21,6 +21,10 @@
 <p>
     For more information, please visit our website at <a href="https://esgforumafrica.com/">https://esgforumafrica.com/</a>
 </p>
+
+<strong style="display: block; margin-bottom: 10px">
+    {{ $user->masterclass == 'Virtually' ? 'Please note that the link to join the masterclass will be shared subsequently' : '' }}.
+</strong>
 
 <p>
     We look forward to welcoming you!
