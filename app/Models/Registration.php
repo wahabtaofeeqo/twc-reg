@@ -25,6 +25,18 @@ class Registration extends Model
         'designation',
         'organization',
         'masterclass',
-        'wants_mentorship'
+        'wants_mentorship',
     ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'wants_mentorship' => 'boolean',
+        ];
+    }
 }

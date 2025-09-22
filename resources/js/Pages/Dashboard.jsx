@@ -18,7 +18,7 @@ export default function Dashboard({models}) {
             })
         }
     }
-
+    
     const onChecked = (model) => {
         let users = selectedUsers;
         let index = users.findIndex(item => item == model.id);
@@ -44,7 +44,7 @@ export default function Dashboard({models}) {
                     <div className='md:flex justify-between mb-4 lg:px-0 p-4 items-center'>
                         <div className='px-4 w-full md:w-2/6 border bg-white p-5 mb-4 rounded'>
                             <p>Total</p>
-                            <h4 className='font-bold text-xl'>{models.data.length}</h4>
+                            <h4 className='font-bold text-xl'>{models.total}</h4>
                         </div>
 
                         <div class="text-end mb-6">

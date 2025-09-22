@@ -2,16 +2,48 @@
 
 namespace App\Exports;
 
-use App\Models\User;
+use App\Models\Registration;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class UsersExport implements FromCollection
+class UsersExport implements FromCollection, WithHeadings
 {
+    public function headings(): array
+    {
+        return [
+            '#',
+            'Name',
+            'Email',
+            'Industry',
+            'Attendance',
+            'Designation',
+            'Nationality',
+            'Organization',
+            'Questions',
+            'Masterclass',
+            'Wants Mentorship',
+            'Created At',
+        ];
+    }
+
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
     public function collection()
     {
-        return User::where('type', 'User')->get();
+        return Registration::select(
+            'id',
+            'name',
+            'email',
+            'industry',
+            'attendance',
+            'designation',
+            'nationality',
+            'organization',
+            'questions',
+            'masterclass',
+            'wants_mentorship',
+            'created_at'
+        )->get();
     }
 }
