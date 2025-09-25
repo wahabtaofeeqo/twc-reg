@@ -1,13 +1,11 @@
 import Checkbox from '@/Components/Checkbox';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
 import SelectInput from '@/Components/SelectInput';
 import TextInput from '@/Components/TextInput';
-import { Head, Link, useForm } from '@inertiajs/react';
+import { Head, useForm } from '@inertiajs/react';
 
 const industries = [
-    //'Process industries',
     'Agriculture',
     'Manufacturing',
     'Consumer non durable',
@@ -44,6 +42,7 @@ export default function Welcome({ }) {
         attendance: '',
         masterclass: '',
         questions: '',
+        picture_consent: '',
         wants_mentorship: false
     });
 
@@ -58,11 +57,6 @@ export default function Welcome({ }) {
         <>
             <Head title="Welcome" />
             <div className="bg-gray-200 text-black/50 ">
-                {/* <img
-                    id="background"
-                    className="absolute -left-20 top-0 max-w-[877px]"
-                    src="https://laravel.com/assets/img/welcome/background.svg"
-                /> */}
                 <div className="relative flex min-h-screen selection:bg-[#FF2D20] selection:text-white">
                     <div className="relative w-full max-w-2xl px-6 lg:max-w-7xl mx-auto shadow-sm">
                         <main>
@@ -79,8 +73,22 @@ export default function Welcome({ }) {
                                         </div>
                                     }
                                     <form onSubmit={submit}>
+                                        <div className="mb-4">
+                                            <InputLabel htmlFor="attendance" value="Attending ESG Forum Masterclass on 28th?" />
+
+                                            <SelectInput 
+                                                id="masterclass"
+                                                className="w-full"
+                                                name="masterclass"
+                                                options={['Virtually']}
+                                                onChange={(e) => setData('masterclass', e.target.value)}
+                                            />
+
+                                            <InputError message={errors.masterclass} className="mt-2" />
+                                        </div>
+
                                         <div>
-                                            <InputLabel htmlFor="attendance" value="Attending ESG Forum 2025" />
+                                            <InputLabel htmlFor="attendance" value="Attending ESG Forum on 29th?" />
 
                                             <SelectInput 
                                                 id="attendance"
@@ -91,20 +99,6 @@ export default function Welcome({ }) {
                                             />
 
                                             <InputError message={errors.attendance} className="mt-2" />
-                                        </div>
-
-                                        <div className="mt-4">
-                                            <InputLabel htmlFor="attendance" value="Attending ESG Forum Masterclass 2025?" />
-
-                                            <SelectInput 
-                                                id="masterclass"
-                                                className="w-full"
-                                                name="masterclass"
-                                                options={['Virtually', 'Physically']}
-                                                onChange={(e) => setData('masterclass', e.target.value)}
-                                            />
-
-                                            <InputError message={errors.masterclass} className="mt-2" />
                                         </div>
 
                                         <div className='mt-4'>
@@ -206,6 +200,19 @@ export default function Welcome({ }) {
                                                 name="question"
                                                 onChange={(e) => setData('question', e.target.value)}
                                             />
+                                        </div>
+
+                                        <div className='mt-4'>
+                                            <InputLabel htmlFor="picture_consent" value=" Do you consent to the use of your pictures and videos taken during the ESG Forum for event content and promotional purposes (e.g., social media, website, reports)?" />
+                                            <SelectInput 
+                                                id="picture_consent"
+                                                className="w-full"
+                                                name="picture_consent"
+                                                options={['Yes, I consent', 'No, I do not consent']}
+                                                onChange={(e) => setData('picture_consent', e.target.value)}
+                                            />
+                    
+                                            <InputError message={errors.picture_consent} className="mt-2" />
                                         </div>
 
                                        <div className="mt-4 block">

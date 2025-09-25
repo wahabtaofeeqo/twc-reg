@@ -22,6 +22,7 @@ class UsersExport implements FromCollection, WithHeadings
             'Questions',
             'Masterclass',
             'Wants Mentorship',
+            'Picture Consent',
             'Created At',
         ];
     }
@@ -43,6 +44,7 @@ class UsersExport implements FromCollection, WithHeadings
             'questions',
             'masterclass',
             'wants_mentorship',
+            'picture_consent',
             'created_at'
         )->get();
     }

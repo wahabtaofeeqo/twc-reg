@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('organization')->nullable();
             $table->string('questions')->nullable();
             $table->string('masterclass')->nullable();
+            $table->string('picture_consent', 100)->nullable();
             $table->boolean('wants_mentorship')->nullable()->default(false);
             $table->timestamps();
         });

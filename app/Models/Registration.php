@@ -25,6 +25,7 @@ class Registration extends Model
         'designation',
         'organization',
         'masterclass',
+        'picture_consent',
         'wants_mentorship',
     ];
 

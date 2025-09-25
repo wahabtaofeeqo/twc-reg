@@ -65,7 +65,8 @@ export default function Dashboard({models}) {
                                         <th scope="col" className="px-6 py-3">Nationality</th>
                                         <th scope="col" className="px-6 py-3">Masterclass</th>
                                         <th scope="col" className="px-6 py-3">Questions</th>
-                                         <th scope="col" className="px-6 py-3">Want Mentorship</th>
+                                        <th scope="col" className="px-6 py-3">Want Mentorship</th>
+                                        <th scope="col" className="px-6 py-3">Use Pictures for Media</th>
                                         <th scope="col" className="px-6 py-3">Action</th>
                                     </tr>
                                 </thead>
@@ -83,6 +84,7 @@ export default function Dashboard({models}) {
                                                     <td className="px-6 py-4"> {model.masterclass || 'N/A'} </td>
                                                     <td className="px-6 py-4"> {model.questions || 'N/A'} </td>
                                                     <td className="px-6 py-4"> {model.wants_mentorship ? 'Yes' : 'No'} </td>
+                                                    <td className="px-6 py-4"> {model.picture_consent|| 'N/A'} </td>
                                                     <td className="px-6 py-4">
                                                         <Checkbox onChange={() => onChecked(model)}></Checkbox>
                                                     </td>
