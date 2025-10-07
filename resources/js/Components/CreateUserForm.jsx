@@ -47,7 +47,7 @@ export default function CreateUserForm({onCreated, user}) {
             },
         }
 
-        if(!user) post(route('register'), option);
+        if(!user) post(route('rsvp'), option);
         else patch(`/dashboard/profile/${user.id}`, option);
     };
 

@@ -7,7 +7,7 @@
 # Dear {{$user->title}} {{explode(' ', $user->name)[1]}},
 
 <p>
-    We are pleased to inform you that your attendance at the 2024 FMDQ GOLD Awards Ceremony has been successfully confirmed. Please present the unique QR code in the image below to check in and collect your pass at the event.
+    We are pleased to inform you that your attendance at the {{date('Y')}} FMDQ GOLD Awards Ceremony has been successfully confirmed. Please present the unique QR code in the image below to check in and collect your pass at the event.
 </p>
 
 We look forward to welcoming you.

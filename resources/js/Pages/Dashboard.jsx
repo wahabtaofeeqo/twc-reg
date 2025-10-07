@@ -118,34 +118,16 @@ export default function Dashboard({models}) {
                                                     <td className="px-6 py-4"> {model.organization || 'N/A'} </td>
                                                     <td className="px-6 py-4"> {model.industry || 'N/A'} </td>
                                                     <td className="px-6 py-4"> {+model.confirmed  == 1 ? 'Yes' : 'No'} </td>
-                                                    <td className="px-6 py-4 flex gap-2">
-                                                        {/* {
-                                                            +model.confirmed ? 
-                                                            (
-                                                                <button title='Reject' onClick={() => reply(model)} className='bg-red-500 py-1 px-2 text-white rounded'>
-                                                                    <i className='fas fa-x'></i>
-                                                                </button>
-                                                            ) : 
-                                                            (
-                                                                <button title='Approve' onClick={() => reply(model, true)} className='bg-green-500 py-1 px-2 text-white rounded'>
-                                                                    <i className='fas fa-check'></i>
-                                                                </button>
-                                                            )
-                                                        } */}
-                                                            
-                                                            <button onClick={() => setUser(model)}>
-                                                                <i className="fas fa-pencil text-blue-500"></i>
-                                                            </button>
+                                                    <td className="px-6 py-4 flex gap-2">                                                            
+                                                        <button onClick={() => setUser(model)}>
+                                                            <i className="fas fa-pencil text-blue-500"></i>
+                                                        </button>
 
-                                                            <select onChange={(e) => reply(model, e.target.value)} className="rounded bg-white py-1 w-24">
-                                                                <option value=""></option>
-                                                                <option value="1">Approve</option>
-                                                                <option value="2">Reject</option>
-                                                            </select>
-
-                                                           
-                                                        
-                                                        {/* <Checkbox onChange={() => onChecked(model)}></Checkbox> */}
+                                                        <select onChange={(e) => reply(model, e.target.value)} className="rounded bg-white py-1 w-24">
+                                                            <option value=""></option>
+                                                            <option value="1">Approve</option>
+                                                            <option value="2">Reject</option>
+                                                        </select>
                                                     </td>
                                                 </tr>
                                             )
