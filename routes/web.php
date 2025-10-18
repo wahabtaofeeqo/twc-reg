@@ -22,9 +22,9 @@ Route::post('rsvp', [IndexController::class, 'store'])->name('rsvp');
 Route::get('success', [IndexController::class, 'success'])->name('rsvp.success');
 
 /**
- * Admin 
+ * Admin
  */
-Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'is.admin']], function () {
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function () {
     Route::get('/', [IndexController::class, 'index'])->name('dashboard');
     Route::post('/send-qr', [IndexController::class, 'sendQr'])->name('send');
     Route::get('/export-qr', [IndexController::class, 'exportQr'])->name('export');
