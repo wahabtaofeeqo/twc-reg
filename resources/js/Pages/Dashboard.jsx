@@ -35,6 +35,14 @@ export default function Dashboard({models, masterclass, virtualCount}) {
         setUsers(users);
     }
 
+    const search = (e) => {
+        let query = e.target.value;
+        router.get(route('dashboard'), {search: query}, {
+            preserveState: true,
+            replace: true
+        })
+    }
+
     return (
         <AuthenticatedLayout>
             <Head title="Dashboard" />
@@ -42,9 +50,9 @@ export default function Dashboard({models, masterclass, virtualCount}) {
             <div className="py-12">
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div class="text-end mb-4 px-4">
-                            <button onClick={sendQr} className='text-sm'>Send QR</button>
-                            <a href="/dashboard/export-qr" className="bg-sky-500 rounded ms-6 px-3 py-2 text-white text-sm">Export Data</a>
-                        </div>
+                        <button onClick={sendQr} className='text-sm'>Send QR</button>
+                        <a href="/dashboard/export-qr" className="bg-sky-500 rounded ms-6 px-3 py-2 text-white text-sm">Export Data</a>
+                    </div>
 
                     <div className='md:flex gap-3 mb-4 lg:px-0 p-4 items-center'>
                         <div className='px-4 w-full md:w-2/6 border bg-white p-5 mb-4 rounded'>
@@ -59,6 +67,15 @@ export default function Dashboard({models, masterclass, virtualCount}) {
                             <p className='text-slate-400 text-sm'>Virtual: {masterclass?.virtual || 0}</p>
                         </div>
                     </div>
+
+                    <div className='mb-3'>
+                        <input type="text" 
+                            className='p-2 rounded w-1/3 outline-none' 
+                            placeholder='Search people...' 
+                            onChange={search}
+                        />
+                    </div>
+
                     <div className="bg-white overflow-hidden shadow-sm mx-4 lg:mx-0 rounded">
                         <div className="relative overflow-x-auto">
                             <table className="w-full text-sm text-left text-gray-500">

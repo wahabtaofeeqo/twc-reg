@@ -18,7 +18,15 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
-        $models = \App\Models\Registration::latest()->paginate(10);
+        $search = $request->input('search');
+        $models = \App\Models\Registration::latest()
+            ->when($search, fn($query) =>
+                $query->where(function($query) use ($search) {
+                    $query->where('name', 'like', "%{$search}%")
+                        ->orWhere('email', 'like', "%{$search}%");
+                })
+            )
+            ->paginate(10);
 
         $virtualCount = Registration::where('attendance', 'virtually')->count();
         $masterclassQuery = \App\Models\Registration::whereNotNull('masterclass');
@@ -115,5 +123,37 @@ class IndexController extends Controller
     public function exportQR()
     {
         return Excel::download(new UsersExport, 'rsvps.xlsx');
+    }
+
+    public function trigger()
+    {
+        // \Mail::to([
+        //     // 'ugo_ebeniro@yahoo.com',
+        //     'taofeekolamilekan218@gmail.com'
+        // ])->send(new \App\Mail\MasterclassLinkMail());
+        // dispatch(new \App\Jobs\ForumLinkJob());
+        dispatch(new \App\Jobs\SendReminderEmailJob());
+
+        return response()->json(['Done']);
+    }
+
+    public function sendNotice() {
+        $query = Registration::whereNotNull('masterclass');
+        foreach ($query->get() as $user) {
+            try {
+                \Mail::to($user)->send(new \App\Mail\NoticeMail($user));
+                $user->notified = true;
+                $user->save();
+            } catch (\Throwable $e) {
+                info($e->getMessage());
+                //throw $th;
+            }
+        }
+
+        return response()->json([
+            'status' => true,
+            'All' => $query->count(),
+            'Notified' => $query->where('notified', true)->count()
+        ]);
     }
 }

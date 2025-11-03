@@ -22,4 +22,10 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
-    })->create();
+    })
+    ->withSchedule(function ($schedule) {
+        $schedule->job(new \App\Jobs\SendReminderEmailJob())->everyMinute();
+        $schedule->job(new \App\Jobs\MasterclassLinkJob())->everyFiveMinutes();
+        $schedule->job(new \App\Jobs\ForumLinkJob())->everyFiveMinutes();
+    })
+    ->create();

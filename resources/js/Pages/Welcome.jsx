@@ -30,7 +30,7 @@ const industries = [
     'Others',
 ]
 
-export default function Welcome({ }) {
+export default function Welcome({ canRegister = true }) {
   
     const { data, setData, post, processing, errors, reset, recentlySuccessful } = useForm({
         name: '',
@@ -231,7 +231,7 @@ export default function Welcome({ }) {
                                         </div>
 
                                         <div className="mt-6 flex items-center justify-end">
-                                            <button className="py-2 px-10 rounded-lg bg-sky-500 text-white" disabled={processing}>
+                                            <button className="py-2 px-10 rounded-lg bg-sky-500 text-white" disabled={processing || !canRegister}>
                                                 Register
                                             </button>
                                         </div>

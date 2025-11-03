@@ -11,6 +11,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "maatwebsite/excel": "^3.1",
+        "resend/resend-laravel": "^0.23.0",
         "simplesoftwareio/simple-qrcode": "^2.0",
         "tightenco/ziggy": "^2.0"
     },
